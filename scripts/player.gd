@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
-const SPEED = 130.0
+@onready var animated_sprite = $AnimatedSprite2D
+
+const SPEED = 100.0
 const JUMP_VELOCITY = -300.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -12,20 +14,21 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# Use custom gameplay actions.
-	var direction = 0
-	if Input.is_action_pressed("move_left"):
-		direction -= 1
-	if Input.is_action_pressed("move_right"):
-		direction += 1
+	# Assign input direction: -1, 0, 1
+	var direction = Input.get_axis("move_left", "move_right")
 
-	if direction != 0:
+	# Flip Sprite
+	if direction > 0:
+		animated_sprite.flip_h = false
+	elif direction < 0:
+		animated_sprite.flip_h = true
+
+	if direction:
 		velocity.x = direction * SPEED
 	else:
-		velocity.x = 0  # Stop immediately if no directional input
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
