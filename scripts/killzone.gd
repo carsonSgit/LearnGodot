@@ -1,7 +1,6 @@
 extends Area2D
 
 @onready var timer = $Timer
-@onready var game_manager = %GameManager
 
 func _on_body_entered(body):
 	Engine.time_scale = 0.5
@@ -11,5 +10,4 @@ func _on_body_entered(body):
 
 func _on_timer_timeout():
 	Engine.time_scale = 1
-	game_manager.reset_score()
 	get_tree().reload_current_scene()

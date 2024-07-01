@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://csaronfpe6iyo"]
+[gd_scene load_steps=18 format=3 uid="uid://csaronfpe6iyo"]
 
 [ext_resource type="PackedScene" uid="uid://dxbxhh5sdkf60" path="res://scenes/player.tscn" id="1_aqsau"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_o4g2c"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://b0wxbip1mymi1" path="res://scenes/killzone.tscn" id="7_ruy2x"]
 [ext_resource type="PackedScene" uid="uid://dmc6ent2syt88" path="res://scenes/slime.tscn" id="8_uqpwk"]
 [ext_resource type="FontFile" uid="uid://dlh2ttsim6h5p" path="res://assets/fonts/PixelOperator8.ttf" id="9_l7h5a"]
-[ext_resource type="AudioStream" uid="uid://bm5s324hm5ka8" path="res://assets/music/time_for_adventure.mp3" id="12_7uduc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w5m5c"]
 texture = ExtResource("3_7x2wo")
@@ -601,8 +600,3 @@ theme_override_colors/font_color = Color(0.147672, 0.147672, 0.147672, 1)
 theme_override_fonts/font = ExtResource("9_l7h5a")
 theme_override_font_sizes/font_size = 8
 text = "Good job!"
-
-[node name="Music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("12_7uduc")
-autoplay = true
-bus = &"Music"
